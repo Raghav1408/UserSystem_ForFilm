@@ -9,6 +9,7 @@ from .models import User
 
 User = get_user_model()
 
+
 class UserAdmin(BaseUserAdmin):
     # The forms to add and change user instances
     form = UserAdminChangeForm

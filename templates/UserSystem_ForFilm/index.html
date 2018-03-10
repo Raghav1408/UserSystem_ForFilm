@@ -1,0 +1,27 @@
+{% block content %}
+<form action="/home/goto/" method="post">{% csrf_token %}
+    <!-- *name -->
+    {{  form.non_field_errors }}
+    <!-- *email -->
+    <div class="fieldWrapper">
+        {{ form.email.errors }}
+        <label for="id_email">Email</label>
+        {{ form.email }}
+    </div>
+    <!-- gist -->
+    <div class="fieldWrapper">
+        {{ form.password.errors }}
+        <label for="id_password">Password</label>
+        {{ form.password }}
+    </div>
+    <!-- location -->
+    <div class="fieldWrapper">
+        {{ form.opt.errors }}
+        <label for="id_expire">Password</label>
+        {{ form.opt }}
+    </div>
+    <button type="submit">
+        <i class="fa fa-thumb-tack"></i> Submit
+    </button>
+</form>
+{% endblock %}

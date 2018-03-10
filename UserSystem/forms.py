@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
+from django.forms import widgets
 
 from .models import User
 
@@ -46,3 +47,23 @@ class UserAdminChangeForm(forms.ModelForm):
         # This is done here, rather than on the field, because the
         # field does not have access to the initial value
         return self.initial["password"]
+
+
+options = (
+    (1, 'Crew'),
+    (2, 'Talent'),
+    (3, 'Producer'),
+    (4, 'Service Provider')
+    )
+
+
+class UserForm(forms.ModelForm):
+    opt = forms.ChoiceField(choices=options, required=True)
+
+    class Meta:
+        model = User
+        fields = ['crew', 'producer', 'talent', 'service_provider', 'opt', 'email', 'password']
+        widgets = {
+            'email': forms.TextInput(attrs={'placeholder': 'john@example.com'}),
+            'password' : forms.PasswordInput(attrs=None, render_value=False)
+        }

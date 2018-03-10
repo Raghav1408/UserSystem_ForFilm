@@ -46,7 +46,6 @@ class User(AbstractBaseUser):
     email = models.EmailField(verbose_name='email address', max_length=300, unique=True,default='123@gmail.com')
 
 #Boolen Flags to determine user is active/inactive and User access to various dashboard
-
     active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False)
     admin = models.BooleanField(default=False)
@@ -54,6 +53,14 @@ class User(AbstractBaseUser):
     talent = models.BooleanField(default=False)
     producer = models.BooleanField(default=False)
     service_provider = models.BooleanField(default=False)
+    opt = models.IntegerField(default=0)
+
+    options = (
+        (1, 'Crew'),
+        (2, 'Talent'),
+        (3, 'Producer'),
+        (4, 'Service Provider')
+    )
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
